@@ -13,6 +13,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'tux'
 gem 'rack-flash3'
+gem 'bcrypt'
 
 group :test do
   gem "rspec"
