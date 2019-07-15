@@ -31,7 +31,8 @@ describe "Teacher" do
   end
 
   it "has many students" do
-    expect(@teacher.courses.students.count).to eq(1)
+
+    expect(@teacher.courses[0].students.count).to eq(1)
   end
 
   it "has secure password" do
