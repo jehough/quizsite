@@ -1,10 +1,11 @@
 ENV["SINATRA_ENV"] = "test"
 
 require_relative '../config/environment'
-require 'database_cleaner/active_record'
+
 require 'rack/test'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require 'database_cleaner'
 
 ActiveRecord::Base.logger = nil
 
