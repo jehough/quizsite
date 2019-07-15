@@ -39,3 +39,5 @@ describe "Teacher" do
 
     expect (@teacher.authenticate("password")).to_eq(@teacher)
   end
+
+end
