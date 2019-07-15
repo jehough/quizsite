@@ -14,30 +14,30 @@ describe "Teacher" do
 
 
   it "can be initialized" do
-    expect (@teacher).to_be_an_instance_of(Teacher)
+    expect(@teacher).to be_an_instance_of(Teacher)
   end
 
   it "has many quizzes" do
-    expect (@teacher.quizes.count).to_eq(1)
+    expect(@teacher.quizzes.count).to eq(1)
   end
 
   it "has many questions" do
-    expect (@teacher.questions.count).to_eq(1)
+    expect(@teacher.questions.count).to eq(1)
   end
 
 
   it "has many classes" do
-    expect (@teacher.classes.count).to_eq(1)
+    expect(@teacher.courses.count).to eq(1)
   end
 
   it "has many students" do
-    expect (@teacher.classes.students.count).to_eq(1)
+    expect(@teacher.courses.students.count).to eq(1)
   end
 
   it "has secure password" do
-    expect (@teacher.authenticate("dog")).to_eq(false)
+    expect(@teacher.authenticate("dog")).to eq(false)
 
-    expect (@teacher.authenticate("password")).to_eq(@teacher)
+    expect(@teacher.authenticate("password")).to eq(@teacher)
   end
 
 end
