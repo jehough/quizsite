@@ -18,3 +18,17 @@ describe "Teacher Home Page" do
   it "has links to questions"
 
 end
+
+describe "Teacher Login" do
+  it "has login and password"
+
+  it "it redirects to teacher homepage"
+
+end
+
+describe "Teacher Course Page" do
+  it "has a list of all students in the course"
+
+  it "has a list of quizzes assigned to the class"
+
+end
