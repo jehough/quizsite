@@ -10,6 +10,7 @@ describe "Teacher" do
     @class = Course.create(:name => "Science", :teacher_id => @teacher.id)
     @student = Student.create(:name => "Sam", :password => "password")
     student_course = StudentCourse.create(:course_id => @class.id, :student_id => @student.id)
+    student_quiz = StudentQuiz.create(:student_id => @student.id, :quiz_id => @quiz.id)
   end
 
 
@@ -39,6 +40,10 @@ describe "Teacher" do
     expect(@teacher.authenticate("dog")).to eq(false)
 
     expect(@teacher.authenticate("password")).to eq(@teacher)
+  end
+
+  it "assigns student a quiz" do
+    expect(@student.quizzes(0)).to eq(@quiz)
   end
 
 end
