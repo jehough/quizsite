@@ -43,7 +43,7 @@ describe "Teacher" do
   end
 
   it "assigns student a quiz" do
-    expect(@student.quizzes(0)).to eq(@quiz)
+    expect(@student.quizzes[0]).to eq(@quiz)
   end
 
 end
