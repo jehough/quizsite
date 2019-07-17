@@ -4,7 +4,7 @@ require 'pry'
 describe "Create Teacher" do
 
   it "shows a page with name and password options" do
-    visit "teacher/create"
+    get "/teacher/new"
     expect(last_response.status).to eq(200)
     expect(last_response.body).to include("Password:")
     expect(last_response.body).to include("Username:")
@@ -13,7 +13,7 @@ describe "Create Teacher" do
 
 
   it "creates a new teacher when submitted" do
-      visit "teacher/create"
+      visit "teacher/new"
       fill_in "Name", with: "Mr. Awesome"
       fill_in "Password", with: "password"
       click_on "Create"
@@ -23,7 +23,7 @@ describe "Create Teacher" do
 
   it "will not allow a username to be repeated" do
     Teacher.create(:name => "don't repeat", :password => "password")
-    visit "teacher/create"
+    visit "teacher/new"
     fill_in "Name", with: "don't repeat"
     fill_in "Password", with: "password"
     click_on "Create"
