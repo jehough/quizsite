@@ -13,3 +13,7 @@
     <li><a href="/teacher/<%= @teacher.slug %>/courses/<%= course.id %>"><%= course.name %></a></li>
   <% end %>
 </ol>
+
+<form action="/teacher/logout" method = "post">
+  <input type="submit" id="logout" value="Log Out"/>
+</form>

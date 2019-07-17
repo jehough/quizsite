@@ -45,6 +45,11 @@ class TeacherController < ApplicationController
     end
   end
 
+  post '/teacher/logout' do
+    session.clear
+    redirect '/'
+  end
+
   get '/teacher/:slug' do
     if Helper.is_teacher?(session)
       if (Teacher.find_by_slug(params[:slug]) == Helper.current_teacher(session))
@@ -57,5 +62,7 @@ class TeacherController < ApplicationController
       redirect '/'
     end
   end
+
+
 
 end
