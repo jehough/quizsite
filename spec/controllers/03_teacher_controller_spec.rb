@@ -69,3 +69,40 @@ describe "Teacher Log-in" do
     expect(body).to include("Username/Password not found!")
   end
 end
+
+describe "teacher show page" do
+  before do
+    @teacher = Teacher.create(:name => "Teacherdude", :password => "password")
+    @teacher2 = Teacher.create(:name => "otherteach", :password => "other")
+    @student = Student.create(:name => "Sally", :password => "student")
+  end
+
+  it "has a list of quizzes" do
+    params = {:name => "Teacherdude", :password => "password"}
+    Quiz.create(:name => "First Day Quiz", :teacher_id => "@teacher.id")
+
+    post '/teacher/login', params
+
+    expect(last_response.body).to include("First Day Quiz")
+  end
+
+  it "has a list of courses" do
+    params = {:name => "Teacherdude", :password => "password"}
+    Course.create(:name => "Chemistry", :teacher_id => "@teacher.id")
+
+    post '/teacher/login', params
+
+    expect(last_response.body).to include("Chemistry")
+  end
+
+  it "cannot be accessed by another teacher" do
+    params = {:name => "otherteach", :password => "other"}
+
+    post '/teacher/login', params
+
+    get "/teacher/#{@teacher.slug}"
+
+    expect(last_response.body).to include("Hello")
+  end
+
+end
