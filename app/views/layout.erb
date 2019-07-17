@@ -3,6 +3,20 @@
   <title>Quiz Site</title>
 </head>
 <body>
+  <header>
+  </header>
+  <nav>
+    <% if Helper.is_teacher?(session) %>
+      <% teacher = Helper.current_teacher(session) %>
+      <a href="/teacher/<%= teacher.slug %>"><button>My Page</button></a>
+    <% elsif Helper.is_student?(session) %>
+      <% student = Helper.current_student(session) %>
+      <a href="/student/<%= student.slug %>"><button>My Page</button></a>
+    <% else %>
+      <a href="/student/login"><button>"Student Login"</button></a>
+      <a href="/teacher/login"><button>"Teacher Login"</button></a>
+    <% end %>
+  </nav>
   <%= yield %>
 </body>
 </html>

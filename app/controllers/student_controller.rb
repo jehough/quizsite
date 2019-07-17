@@ -6,6 +6,7 @@ class StudentController < ApplicationController
 
   get '/student' do
     if Helper.is_teacher?(session)
+      @students = Student.all
       erb :'student/index'
     else
       redirect '/'
