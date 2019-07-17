@@ -26,4 +26,8 @@ class TeacherController < ApplicationController
     end
   end
 
+  get '/teacher/login' do
+    erb :'teacher/login'
+  end
+
 end
