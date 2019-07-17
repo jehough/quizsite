@@ -20,6 +20,7 @@
   <p> New Course Name: <input type="text" name="course" id="course"/> <input type="submit" id="create" value="Create"</p>
 </form>
 
+<a href="/teacher/<%= @teacher.slug %>/question"><button>My Questions</button></a>
 <a href="/student"><button>All Students</button></a>
 <form action="/teacher/logout" method = "post">
   <input type="submit" id="logout" value="Log Out"/>
