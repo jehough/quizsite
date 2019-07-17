@@ -1,7 +1,7 @@
 require 'pry'
 require 'rack-flash'
 
-class TeacherController < ApplicationController
+class StudentController < ApplicationController
   use Rack::Flash
 
 
