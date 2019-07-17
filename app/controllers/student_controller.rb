@@ -51,11 +51,11 @@ class StudentController < ApplicationController
     redirect '/'
   end
 
-  get '/teacher/:slug' do
-    if Helper.is_teacher?(session)
-      if (Teacher.find_by_slug(params[:slug]) == Helper.current_teacher(session))
-        @teacher = Helper.current_teacher(session)
-        erb :'teacher/show'
+  get '/student/:slug' do
+    if Helper.is_student?(session)
+      if (Student.find_by_slug(params[:slug]) == Helper.current_student(session))
+        @student = Helper.current_student(session)
+        erb :'student/show'
       else
         redirect '/'
       end
@@ -63,7 +63,5 @@ class StudentController < ApplicationController
       redirect '/'
     end
   end
-
-
 
 end
