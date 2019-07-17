@@ -9,6 +9,11 @@ class QuestionController < ApplicationController
         @questions = @teacher.questions
         erb :'questions/index'
       else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
   end
 
   get '/teacher/:slug/question/new' do
