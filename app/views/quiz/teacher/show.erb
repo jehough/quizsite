@@ -1,2 +1,10 @@
 <h1><%= @quiz.name %></h1>
 <h4>By: <%= @teacher.name %> </h4>
+
+<ol>
+<% @quiz.questions.each do |question| %>
+  <li><%= question.question %></li>
+<% end %>
+</ol>
+
+<a href="/teacher/<%= @teacher.slug %>/quiz/<% @quiz.id %>/add_questions"><button>Add/Remove Questions</button></a>
