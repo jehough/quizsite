@@ -46,6 +46,17 @@ class TeacherCourseController < ApplicationController
     end
   end
 
+  post '/teacher/:slug/course/:id' do
+    teacher = Helper.current_teacher(session)
+    course = Course.find(params[:id])
+    params[:students].each do |student_id|
+      student = Student.find(student_id.to_i)
+      if !course.students.include?(student)
+        StudentCourse.create(:student_id => student.id, :course_id => course.id)
+      end
+    end
+    redirect "/teacher/#{teacher.slug}/course/#{course.id}"
+  end
 
 
 end

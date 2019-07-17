@@ -1,4 +1,11 @@
 <h1>Add Students to <%= @course.name %></h1>
 
-  <form action="/teacher/<%= @teacher.id %>/course/<%= course.id %>" method="post">
-    
+  <form action="/teacher/<%= @teacher.slug %>/course/<%= @course.id %>" method="post">
+    <input type="hidden" id="hidden" name="_method" value="patch"/>
+    <% @students.each do |student| %>
+      <input type="checkbox" name="students[]" id="<%= student.name %>" value="<%= student.id %>" <%= 'checked' if @course.students.include?(student) %>>
+        <%= student.name %>
+      </input><br>
+    <% end %>
+    <input type="submit" id="submit"/>
+  </form>
