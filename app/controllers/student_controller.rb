@@ -23,30 +23,30 @@ class TeacherController < ApplicationController
     end
   end
 
-  get '/teacher/login' do
-    if Helper.is_teacher?(session)
+  get '/student/login' do
+    if Helper.is_student?(session)
+      student = Helper.current_student(session)
+      redirect "/student/#{student.slug}"
+    elsif Helper.is_teacher?(session)
       teacher = Helper.current_teacher(session)
-      redirect "teacher/#{teacher.slug}"
-    elsif Helper.is_student?(session)
-      flash[:message] = "Students may not log in as teachers"
-      redirect '/'
-    else
-      erb :'teacher/login'
-    end
-  end
-
-  post '/teacher/login' do
-    teacher = Teacher.find_by(:name =>params[:name])
-    if teacher && teacher.authenticate(params[:password])
-      session[:teacher_id]= teacher.id
       redirect "/teacher/#{teacher.slug}"
     else
-      flash[:message] = "Username/Password not found!"
-      redirect '/teacher/login'
+      erb :'student/login'
     end
   end
 
-  post '/teacher/logout' do
+  post '/student/login' do
+    student = Student.find_by(:name =>params[:name])
+    if student && student.authenticate(params[:password])
+      session[:student_id]= student.id
+      redirect "/student/#{student.slug}"
+    else
+      flash[:message] = "Username/Password not found!"
+      redirect '/student/login'
+    end
+  end
+
+  post '/student/logout' do
     session.clear
     redirect '/'
   end
