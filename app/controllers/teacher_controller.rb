@@ -45,7 +45,7 @@ class TeacherController < ApplicationController
     end
   end
 
-  get '/teacher/:slug'
+  get '/teacher/:slug' do
     if Helper.is_teacher?(session)
       @teacher = Helper.current_teacher(session)
       erb :'teacher/show'

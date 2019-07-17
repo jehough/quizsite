@@ -9,11 +9,11 @@ class Helper
   end
 
   def self.current_teacher(hash)
-    Teacher.find(hash(:teacher_id))
+    Teacher.find(hash[:teacher_id])
   end
 
   def self.current_student(hash)
-    Student.find(hash(:student_id))
+    Student.find(hash[:student_id])
   end
 
 end
