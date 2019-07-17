@@ -2,33 +2,33 @@ require 'spec_helper'
 require 'pry'
 
 describe "Create Teacher" do
-  it "shows a page with name and password options"
 
-  it "creates a new teacher when submitted"
+  it "shows a page with name and password options" do
+    visit "teacher/create"
+    expect(last_response.status).to eq(200)
+    expect(last_response.body).to include("Password:")
+    expect(last_response.body).to include("Username:")
+  end
 
-  it "redirects to the user homepage"
 
-end
 
-describe "Teacher Home Page" do
-  it "has links to teachers classes"
+  it "creates a new teacher when submitted" do
+      visit "teacher/create"
+      fill_in "Name", with: "Mr. Awesome"
+      fill_in "Password", with: "password"
+      click_on "Create"
 
-  it "has links to quizes"
+      expect(body).to include("Welcome, Mr. Awesome!")
+  end
 
-  it "has links to questions"
+  it "will not allow a username to be repeated" do
+    Teacher.create(:name => "don't repeat", :password => "password")
+    visit "teacher/create"
+    fill_in "Name", with: "don't repeat"
+    fill_in "Password", with: "password"
+    click_on "Create"
 
-end
-
-describe "Teacher Login" do
-  it "has login and password"
-
-  it "it redirects to teacher homepage"
-
-end
-
-describe "Teacher Course Page" do
-  it "has a list of all students in the course"
-
-  it "has a list of quizzes assigned to the class"
+    expect(body).to include("This username is taken")
+  end
 
 end
