@@ -26,7 +26,7 @@ class TeacherController < ApplicationController
     if Helper.is_teacher?(session)
       teacher = Helper.current_teacher(session)
       redirect "teacher/#{teacher.slug}"
-    elsif Helper.is_student?
+    elsif Helper.is_student?(session)
       flash[:message] = "Students may not log in as teachers"
       redirect '/'
     else
