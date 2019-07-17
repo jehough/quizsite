@@ -31,7 +31,7 @@ class QuestionController < ApplicationController
   end
 
   post '/teacher/:slug/question' do
-
+    puts params
   end
 
   get '/teacher/:slug/question/:id/edit' do
