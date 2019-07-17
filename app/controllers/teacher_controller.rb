@@ -27,7 +27,14 @@ class TeacherController < ApplicationController
   end
 
   get '/teacher/login' do
-    erb :'teacher/login'
+    if Helper.is_teacher?
+      redirect '/teacher'
+    elsif Helper.is_student?
+      flash[:message] = "Students may not log in as teachers"
+      redirect '/'
+    else
+      erb :'teacher/login'
+    end
   end
 
   post '/teacher/login' do
