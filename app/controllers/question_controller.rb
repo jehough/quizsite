@@ -3,7 +3,12 @@ require 'pry'
 class QuestionController < ApplicationController
 
   get '/teacher/:slug/question' do
-
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @questions = @teacher.questions
+        erb :'questions/index'
+      else
   end
 
   get '/teacher/:slug/question/new' do
@@ -23,7 +28,7 @@ class QuestionController < ApplicationController
   end
 
   patch '/teacher/:slug/question/:id' do
-    
+
   end
 
 end
