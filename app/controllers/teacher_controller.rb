@@ -1,5 +1,8 @@
 require 'pry'
+require 'rack-flash'
+
 class TeacherController < ApplicationController
+  use Rack::Flash
 
   get '/teacher' do
     @teacher = Teacher.find(session[:teacher_id])
@@ -14,6 +17,7 @@ class TeacherController < ApplicationController
     if (params[:name] == "" || params[:password] == "")
       redirect '/signup'
     elsif !!(Teacher.find_by(:name => params[:name]))
+      flash[:message] = "This username is taken."
       redirect '/teacher/new'
     else
       teacher = Teacher.create(:name => params[:name], :password =>[:password])

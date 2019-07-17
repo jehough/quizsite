@@ -2,6 +2,9 @@
 <form action="/teacher" method="post">
 
   <p>Username: <input type="text" id="Name" name="name"/></p>
+  <% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %>
   <p>Password: <input type="password" id="Password" name="password"/></p>
   <input type="submit" id="Create" value="Create"/>
 
