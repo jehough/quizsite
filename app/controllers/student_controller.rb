@@ -4,9 +4,20 @@ require 'rack-flash'
 class StudentController < ApplicationController
   use Rack::Flash
 
+  get '/student' do
+    if Helper.is_teacher?(session)
+      erb :'student/index'
+    else
+      redirect '/'
+    end
+  end
 
   get '/student/new' do
-    erb :'student/new'
+    if Helper.is_teacher?(session)
+      erb :'student/new'
+    else
+      redirect '/'
+    end
   end
 
   post '/student' do
@@ -18,8 +29,7 @@ class StudentController < ApplicationController
       redirect '/student/new'
     else
       student = Student.create(:name => params[:name], :password => params[:password])
-      session[:student_id] = student.id
-      redirect "/student/#{student.slug}"
+      redirect "/student"
     end
   end
 

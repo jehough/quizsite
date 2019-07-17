@@ -6,7 +6,12 @@ class TeacherController < ApplicationController
 
 
   get '/teacher/new' do
-    erb :'teacher/new'
+    if Helper.is_teacher?(session)
+      teacher = Helper.current_teacher(session)
+      redirect "/teacher/#{teacher.slug}"
+    else
+      erb :'teacher/new'
+    end
   end
 
   post '/teacher' do
