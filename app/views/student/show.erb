@@ -1,0 +1,12 @@
+<h1>Welcome, <%= @student.name %>!</h1>
+
+<h3>Your Classes:</h3>
+<ol>
+  <% @student.courses.each do |course| %>
+    <li><a href="/student/<%= @student.slug %>/courses/<%= course.id %>"><%= course.name %></a></li>
+  <% end %>
+</ol>
+
+<form action="/student/logout" method = "post">
+  <input type="submit" id="logout" value="Log Out"/>
+</form>
