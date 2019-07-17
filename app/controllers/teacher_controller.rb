@@ -47,8 +47,12 @@ class TeacherController < ApplicationController
 
   get '/teacher/:slug' do
     if Helper.is_teacher?(session)
-      @teacher = Helper.current_teacher(session)
-      erb :'teacher/show'
+      if (Teacher.find_by_slug(params[:slug]) == Helper.current_teacher(session))
+        @teacher = Helper.current_teacher(session)
+        erb :'teacher/show'
+      else
+        redirect '/'
+      end
     else
       redirect '/'
     end

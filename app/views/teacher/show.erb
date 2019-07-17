@@ -1,1 +1,15 @@
 <h1>Welcome, <%= @teacher.name %>!</h1>
+
+<h3>Your Quizzes:</h3>
+<ol>
+  <% @teacher.quizzes.each do |quiz| %>
+    <li><a href="/teacher/<%= @teacher.slug %>/quizzes/<%= quiz.id %>"><%= quiz.name %></a></li>
+  <% end %>
+</ol>
+
+<h3>Your Classes:</h3>
+<ol>
+  <% @teacher.courses.each do |course| %>
+    <li><a href="/teacher/<%= @teacher.slug %>/courses/<%= course.id %>"><%= course.name %></a></li>
+  <% end %>
+</ol>
