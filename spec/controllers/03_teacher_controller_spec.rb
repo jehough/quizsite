@@ -45,7 +45,7 @@ describe "Teacher Log-in" do
     visit "teacher/login"
     fill_in "Name", with: "Mr. Awesome"
     fill_in "Password", with: "password"
-    click_on "Log In"
+    click_on "Login"
 
     expect(body).to include("Welcome, Mr. Awesome!")
   end
@@ -55,7 +55,7 @@ describe "Teacher Log-in" do
     visit "teacher/login"
     fill_in "Name", with: "Sam"
     fill_in "Password", with: "jackinthebox"
-    click_on "Log In"
+    click_on "Login"
 
     expect(body).to include("Username/Password not found!")
   end
@@ -64,7 +64,7 @@ describe "Teacher Log-in" do
     visit "teacher/login"
     fill_in "Name", with: "Joe"
     fill_in "Password", with: "notateacher"
-    click_on "Log In"
+    click_on "Login"
 
     expect(body).to include("Username/Password not found!")
   end
