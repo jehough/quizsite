@@ -47,4 +47,5 @@ class TeacherController < ApplicationController
       redirect '/teacher/login'
     end
   end
+
 end
