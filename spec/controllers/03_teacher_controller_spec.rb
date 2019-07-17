@@ -79,18 +79,24 @@ describe "teacher show page" do
 
   it "has a list of quizzes" do
     params = {:name => "Teacherdude", :password => "password"}
-    Quiz.create(:name => "First Day Quiz", :teacher_id => "@teacher.id")
+
+
 
     post '/teacher/login', params
-
+    quiz = Quiz.create(:name => "First Day Quiz", :teacher_id => @teacher.id)
+    @teacher.quizzes << quiz
+    get "/teacher/#{@teacher.slug}"
+    
     expect(last_response.body).to include("First Day Quiz")
   end
 
   it "has a list of courses" do
     params = {:name => "Teacherdude", :password => "password"}
-    Course.create(:name => "Chemistry", :teacher_id => "@teacher.id")
 
     post '/teacher/login', params
+    course = Course.create(:name => "Chemistry", :teacher_id => @teacher.id)
+    @teacher.courses << course
+    get "/teacher/#{@teacher.slug}"
 
     expect(last_response.body).to include("Chemistry")
   end

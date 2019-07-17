@@ -1,0 +1,4 @@
+class TeacherQuizController < ApplicationController
+
+
+end
