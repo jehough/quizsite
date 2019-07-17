@@ -1,0 +1,18 @@
+<h1><%= @teacher.name %>'s <%= @course.name %> Class</h1>
+
+<table>
+  <tr>
+    <th>Students</th>
+    <% @course.quizzes.each do |quiz| %>
+      <th> <%= quiz.name %> </th>
+    <% end %>
+  </tr>
+  <% @course.students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <% student.student_quizzes.each do |quiz| %>
+        <td><%= quiz.score %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
