@@ -17,6 +17,21 @@ class TeacherCourseController < ApplicationController
     end
   end
 
+  get "/teacher/:slug/course/:id/add_students" do
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @course = Course.find(params[:id])
+        @students = Student.all
+        erb :'course/teacher/add_students'
+      else
+        redirect '/'
+      end
+    else
+        redirect '/'
+    end
+  end
+
   get "/teacher/:slug/course/:id" do
     if Helper.is_teacher?(session)
       if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
@@ -31,8 +46,6 @@ class TeacherCourseController < ApplicationController
     end
   end
 
-  get "/teacher/:slug/course/:id/add_students" do
 
-  end
 
 end
