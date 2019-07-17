@@ -14,10 +14,10 @@ class TeacherController < ApplicationController
     if (params[:name] == "" || params[:password] == "")
       redirect '/signup'
     elsif !!(Teacher.find_by(:name => params[:name]))
-      redirect '/signup'
+      redirect '/teacher/new'
     else
       teacher = Teacher.create(:name => params[:name], :password =>[:password])
-      session[:teacher_id] = teacher
+      session[:teacher_id] = teacher.id
       redirect '/teacher'
     end
   end
