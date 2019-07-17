@@ -15,11 +15,14 @@ ActiveRecord::Schema.define(version: 2019_07_16_122334) do
   create_table "course_quizzes", force: :cascade do |t|
     t.integer "course_id"
     t.integer "quiz_id"
+    t.index ["course_id"], name: "index_course_quizzes_on_course_id"
+    t.index ["quiz_id"], name: "index_course_quizzes_on_quiz_id"
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.integer "teacher_id"
+    t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -31,21 +34,27 @@ ActiveRecord::Schema.define(version: 2019_07_16_122334) do
     t.string "correct_ans"
     t.string "question_type"
     t.integer "teacher_id"
+    t.index ["teacher_id"], name: "index_questions_on_teacher_id"
   end
 
   create_table "quiz_questions", force: :cascade do |t|
     t.integer "quiz_id"
     t.integer "question_id"
+    t.index ["question_id"], name: "index_quiz_questions_on_question_id"
+    t.index ["quiz_id"], name: "index_quiz_questions_on_quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
     t.string "name"
     t.integer "teacher_id"
+    t.index ["teacher_id"], name: "index_quizzes_on_teacher_id"
   end
 
   create_table "student_courses", force: :cascade do |t|
     t.integer "student_id"
     t.integer "course_id"
+    t.index ["course_id"], name: "index_student_courses_on_course_id"
+    t.index ["student_id"], name: "index_student_courses_on_student_id"
   end
 
   create_table "student_quizzes", force: :cascade do |t|
@@ -54,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_07_16_122334) do
     t.integer "score"
     t.datetime "open_time"
     t.datetime "close_time"
+    t.index ["quiz_id"], name: "index_student_quizzes_on_quiz_id"
+    t.index ["student_id"], name: "index_student_quizzes_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

@@ -8,7 +8,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :ans_4
       t.string :correct_ans
       t.string :question_type
-      t.integer :teacher_id
+      t.belongs_to :teacher, index: true
     end
   end
 end
