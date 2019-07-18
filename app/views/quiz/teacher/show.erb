@@ -3,7 +3,7 @@
 
 <ol>
 <% @quiz.questions.each do |question| %>
-  <li><a href="/teacher/<%= teacher.slug %>/question/<%= quiz.id %>"><%= question.question %></a></li>
+  <li><a href="/teacher/<%= @teacher.slug %>/question/<%= question.id %>"><%= question.question %></a></li>
 <% end %>
 </ol>
 
