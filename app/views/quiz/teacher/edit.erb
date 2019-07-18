@@ -3,4 +3,9 @@
 <form action="/teacher/<%= @teacher.slug %>/quiz/<% @quiz.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch"/>
   <% @questions.each do |question| %>
-  <
+  <input type="checkbox" name= "question[]" id="<%= question.id %>" <%='checked' if @quiz.questions.include?(question) %>>
+    <%= question.question %><br>
+  </input>
+  <% end %>
+  <input type="submit" id="Edit" value="Add/Remove Questions"/>
+</form>
