@@ -1,0 +1,9 @@
+<form action='/teacher/<%= @teacher.slug %>/question' method="post">
+  <p> Question: <input type="text" name="question[question]" /></p>
+  <h4>Select Correct Answer with button on left.</h4>
+  <p><input type="radio" name = "question[correct_ans]" value="ans_1" <% :checked=> (@question.correct_ans == "ans_1") %>> Choice 1: <input type="text" name="question[ans_1]" value="@question.ans_1"/></p>
+  <p><input type="radio" name = "question[correct_ans]" value="ans_2" <% :checked=> (@question.correct_ans == "ans_2") %>> Choice 2: <input type="text" name="question[ans_2]" value="@question.ans_2"/></p>
+  <p><input type="radio" name = "question[correct_ans]" value="ans_3" <% :checked=> (@question.correct_ans == "ans_3") %>> Choice 3: <input type="text" name="question[ans_3]" value="@question.ans_3"/></p>
+  <p><input type="radio" name = "question[correct_ans]" value="ans_4" <% :checked=> (@question.correct_ans == "ans_4") %>> Choice 4: <input type="text" name="question[ans_4]" value="@question.ans_4"/></p>
+  <input type="submit" id="Create" value="Create"/>
+</form>

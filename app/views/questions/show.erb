@@ -9,3 +9,5 @@
 <br>
 <% ans = @question.correct_ans %>
 <p>Correct Answer: <%= @question.send(ans.to_sym) %> </p>
+
+<a href="/teacher/<%= @teacher.slug %>/question/<%= @question.id %>/edit"><button>Edit This Question</button></a>
