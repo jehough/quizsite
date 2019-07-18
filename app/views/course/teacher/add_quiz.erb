@@ -1,4 +1,7 @@
 <h1>Assign Quiz to <%= @course.name %></h1>
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
 <form action="/teacher/<%= @teacher.slug %>/course/<%= @course.id %>/quiz" method="post">
   <h3>Select Quiz</h3>
   <% @quizzes.each do |quiz| %>
