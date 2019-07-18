@@ -1,1 +1,17 @@
-<h1> This is Your Quiz </h1>
+<h1> <%= @stquiz.quiz.name %> </h1>
+<br>
+<form action="/student/<%= @student.slug %>/quiz/<%= @stquiz.id %>" method="POST">
+  <ol>
+  <% @stquiz.quiz.questions.each do |question| %>
+    <li><%= question.question %> </li>
+      <ol>
+        <li><input type="radio" name="<%= question.id %>[student_ans]" value="ans_1"><%= question.ans_1 %> </li></input>
+        <li><input type="radio" name="<%= question.id %>[student_ans]" value="ans_2"><%= question.ans_2 %> </li>
+        <li><input type="radio" name="<%= question.id %>[student_ans]" value="ans_3"><%= question.ans_3 %> </li>
+        <li><input type="radio" name="<%= question.id %>[student_ans]" value="ans_4"><%= question.ans_4 %> </li>
+      </ol>
+      <br>
+  <% end %>
+  </ol>
+  <input type="submit" id="Submit" Value="Submit for Grading"/>
+</form>
