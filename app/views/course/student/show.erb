@@ -1,0 +1,12 @@
+<h1><%= @course.teacher.name %>'s <%= @course.name %> class</h1>
+<table>
+  <tr>
+    <th> Quiz </th>
+    <th> Score </th>
+  </tr>
+  <% @quizzes.each do |quiz| %>
+    <tr>
+      <td> <a href="/student/<%= @student.slug %>/quiz/<%= quiz.id %>"><%= quiz.name %> </td>
+      <td> <%= @studquiz.find{|obj| obj.quiz_id == quiz.id}.score %> </td>
+    </tr>
+  </table>
