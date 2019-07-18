@@ -80,13 +80,20 @@ class QuestionController < ApplicationController
         @teacher = Helper.current_teacher(session)
         @question = Question.find(params[:id])
         @question.update(params[:question])
-        redirect "/teacher/#{@teacher.id}/question/#{question.id}"
+        redirect "/teacher/#{@teacher.slug}/question/#{@question.id}"
       else
         redirect '/'
       end
     else
       redirect '/'
     end
+  end
+
+  delete '/teacher/:slug/question/:id' do
+    teacher = Teacher.find_by_slug(params[:slug])
+    question = Question.find(params[:id])
+    question.destroy
+    redirect "/teacher/#{teacher.slug}/question"
   end
 
 end

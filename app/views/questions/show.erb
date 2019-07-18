@@ -11,3 +11,7 @@
 <p>Correct Answer: <%= @question.send(ans.to_sym) %> </p>
 
 <a href="/teacher/<%= @teacher.slug %>/question/<%= @question.id %>/edit"><button>Edit This Question</button></a>
+<form action="/teacher/<%= @teacher.slug %>/question/<%= @question.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="delete"/>
+  <input type="submit" id="Delete" value="Delete This Question"/>
+</form>
