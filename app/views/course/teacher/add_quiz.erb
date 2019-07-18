@@ -5,8 +5,9 @@
     <input type="radio" id="<%= quiz.name %> name="quiz" value="<%= quiz.id %>"><%= quiz.name %></input>
   <% end %>
   <h3>Select Start Time</h3>
-    <input type="datetime-local" id="start_time" name="start_time"/>
+  <input type="datetime-local" id="start_time" name="start_time"/>
   <h3>Select End Time</h3>
-    <input type="datetime-local" id="end_time" name="end_time" />
-
+  <input type="datetime-local" id="end_time" name="end_time" /><br>
+  <br>
+  <input type="submit" id="add_quiz" value="Add Quiz"/>
 </form>

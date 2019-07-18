@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 2019_07_16_122334) do
   create_table "student_quizzes", force: :cascade do |t|
     t.integer "student_id"
     t.integer "quiz_id"
+    t.integer "course_quiz_id"
     t.integer "score"
     t.datetime "open_time"
     t.datetime "close_time"
+    t.index ["course_quiz_id"], name: "index_student_quizzes_on_course_quiz_id"
     t.index ["quiz_id"], name: "index_student_quizzes_on_quiz_id"
     t.index ["student_id"], name: "index_student_quizzes_on_student_id"
   end
