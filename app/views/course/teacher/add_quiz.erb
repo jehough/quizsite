@@ -1,2 +1,12 @@
 <h1>Assign Quiz to <%= @course.name %></h1>
-<form 
+<form action="/teacher/<%= @teacher.slug %>/course/<%= @course.id %>/quiz" method="post">
+  <h3>Select Quiz</h3>
+  <% @quizzes.each do |quiz| %>
+    <input type="radio" id="<%= quiz.name %> name="quiz" value="<%= quiz.id %>"><%= quiz.name %></input>
+  <% end %>
+  <h3>Select Start Time</h3>
+    <input type="datetime-local" id="start_time" name="start_time"/>
+  <h3>Select End Time</h3>
+    <input type="datetime-local" id="end_time" name="end_time" />
+
+</form>
