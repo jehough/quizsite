@@ -7,8 +7,11 @@ require_relative './app/controllers/teacher_quiz_controller'
 require_relative './app/controllers/question_controller'
 require_relative './app/controllers/teacher_course_quiz_controller.rb'
 require_relative './app/controllers/student_course_controller'
+require_relative './app/controllers/student_quiz_controller'
+
 
 use Rack::MethodOverride
+use StudentQuizController
 use StudentCourseController
 use TeacherCourseQuizController
 use QuestionController
