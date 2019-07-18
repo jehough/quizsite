@@ -47,11 +47,31 @@ class QuestionController < ApplicationController
   end
 
   get '/teacher/:slug/question/:id/edit' do
-
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @question = Question.find(params[:id])
+        erb :'/questions/edit'
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
   end
 
   get '/teacher/:slug/question/:id' do
-
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @question = Question.find(params[:id])
+        erb :'/questions/show'
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
   end
 
   patch '/teacher/:slug/question/:id' do

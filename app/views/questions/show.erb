@@ -1,0 +1,11 @@
+<h1>View Your Question</h1>
+
+<h4><%= @question.question %></h4>
+<p> A. <%= @question.ans_1 %></p>
+<p> B. <%= @question.ans_2 %></p>
+<p> C. <%= @question.ans_3 %></p>
+<p> D. <%= @question.ans_4 %></p>
+
+<br>
+<% ans = @question.correct_ans %>
+<p>Correct Answer: <%= @question.send(ans.to_sym) %> </p>
