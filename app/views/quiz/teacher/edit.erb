@@ -1,0 +1,6 @@
+<h1><%= @quiz.name %></h1>
+<h3>Select Questions:</h3>
+<form action="/teacher/<%= @teacher.slug %>/quiz/<% @quiz.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch"/>
+  <% @questions.each do |question| %>
+  <

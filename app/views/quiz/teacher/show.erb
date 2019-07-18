@@ -7,7 +7,7 @@
 <% end %>
 </ol>
 
-<a href="/teacher/<%= @teacher.slug %>/quiz/<% @quiz.id %>/edit"><button>Add/Remove Questions</button></a>
+<a href="/teacher/<%= @teacher.slug %>/quiz/<%= @quiz.id %>/edit"><button>Add/Remove Questions</button></a>
 <form action="/teacher/<%= @teacher.slug %>/quiz/<%= @quiz.id %>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="delete"/>
   <input type="submit" id="Delete" value="Delete This Quiz"/>

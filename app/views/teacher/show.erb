@@ -4,6 +4,10 @@
 <ol>
   <% @teacher.quizzes.each do |quiz| %>
     <li><a href="/teacher/<%= @teacher.slug %>/quiz/<%= quiz.id %>"><%= quiz.name %></a></li>
+    <form action="/teacher/<%= @teacher.slug %>/quiz/<%= quiz.id %>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="delete"/>
+      <input type="submit" id="Delete" value="Delete This Quiz"/>
+    </form>
   <% end %>
 </ol>
 <form action="/teacher/<%= @teacher.slug %>/quiz" method="post">

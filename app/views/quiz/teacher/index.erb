@@ -1,0 +1,9 @@
+<h3>Your Quizzes:</h3>
+<ol>
+  <% @teacher.quizzes.each do |quiz| %>
+    <li><a href="/teacher/<%= @teacher.slug %>/quiz/<%= quiz.id %>"><%= quiz.name %></a></li>
+  <% end %>
+</ol>
+<form action="/teacher/<%= @teacher.slug %>/quiz" method="post">
+  <p> New Quiz Name: <input type="text" name="name" id="quiz"/> <input type="submit" id="create" value="Create"</p>
+</form>
