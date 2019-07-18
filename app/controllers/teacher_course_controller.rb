@@ -17,7 +17,7 @@ class TeacherCourseController < ApplicationController
     end
   end
 
-  get "/teacher/:slug/course/:id/add_students" do
+  get "/teacher/:slug/course/:id/edit" do
     if Helper.is_teacher?(session)
       if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
         @teacher = Helper.current_teacher(session)
