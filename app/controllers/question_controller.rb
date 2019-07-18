@@ -75,7 +75,18 @@ class QuestionController < ApplicationController
   end
 
   patch '/teacher/:slug/question/:id' do
-    puts params
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @question = Question.find(params[:id])
+        @question.update(params[:question])
+        redirect "/teacher/#{@teacher.id}/question/#{question.id}"
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
   end
 
 end
