@@ -46,7 +46,7 @@ class TeacherCourseController < ApplicationController
     end
   end
 
-  post '/teacher/:slug/course/:id' do
+  patch '/teacher/:slug/course/:id' do
     teacher = Helper.current_teacher(session)
     course = Course.find(params[:id])
     students = params[:students].map do |student_id|
