@@ -32,6 +32,21 @@ class TeacherCourseController < ApplicationController
     end
   end
 
+  get "/teacher/:slug/course/:id/add_quiz" do
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        @course = Course.find(params[:id])
+        @quizzes = @teacher.quizzes
+        erb :'course/teacher/add_quiz'
+      else
+        redirect '/'
+      end
+    else
+        redirect '/'
+    end
+  end
+
   get "/teacher/:slug/course/:id" do
     if Helper.is_teacher?(session)
       if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
