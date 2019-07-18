@@ -8,7 +8,6 @@ class StudentQuizController < ApplicationController
       if (Helper.current_student(session) == Student.find_by_slug(params[:slug]))
         @student = Helper.current_student(session)
         @stquiz = StudentQuiz.find(params[:id])
-        binding.pry
         if (@stquiz.score != nil)
           flash[:message] = "I'm sorry, you have already taken this quiz"
           erb :'/quiz/student/error'
