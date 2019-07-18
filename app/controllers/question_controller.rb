@@ -31,7 +31,19 @@ class QuestionController < ApplicationController
   end
 
   post '/teacher/:slug/question' do
-    puts params
+    if Helper.is_teacher?(session)
+      if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
+        @teacher = Helper.current_teacher(session)
+        question = Question.create(params[:question])
+        question.teacher = @teacher
+        question.save
+        redirect "/teacher/#{@teacher.slug}/question"
+      else
+        redirect '/'
+      end
+    else
+      redirect'/'
+    end
   end
 
   get '/teacher/:slug/question/:id/edit' do

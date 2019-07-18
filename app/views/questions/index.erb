@@ -11,12 +11,12 @@
 </tr>
 <% @questions.each do |question| %>
   <tr>
-    <td><a href="teacher/<%= @teacher.slug %>/question/<%= question.id %>"><%= question.question %></a></td>
+    <td><a href="/teacher/<%= @teacher.slug %>/question/<%= question.id %>"><%= question.question %></a></td>
     <td><%= question.ans_1 %></td>
     <td><%= question.ans_2 %></td>
     <td><%= question.ans_3 %></td>
     <td><%= question.ans_4 %></td>
-    <td><%= question.correc_ans %></td>
+    <td><%= question.correct_ans %></td>
   </tr>
 <% end %>
 
