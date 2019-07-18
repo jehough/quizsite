@@ -4,9 +4,10 @@
     <th> Quiz </th>
     <th> Score </th>
   </tr>
-  <% @quizzes.each do |quiz| %>
+  <% @quizzes.each do |stquiz| %>
     <tr>
-      <td> <a href="/student/<%= @student.slug %>/quiz/<%= quiz.id %>"><%= quiz.name %> </td>
-      <td> <%= @studquiz.find{|obj| obj.quiz_id == quiz.id}.score %> </td>
+      <td> <a href="/student/<%= @student.slug %>/quiz/<%= stquiz.id %>"><%= stquiz.quiz.name %> </td>
+      <td> <%= stquiz.score %> </td>
     </tr>
+  <% end %>
   </table>
