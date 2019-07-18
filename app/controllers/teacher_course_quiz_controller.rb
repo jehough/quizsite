@@ -21,8 +21,9 @@ class TeacherCourseQuizController < ApplicationController
     if Helper.is_teacher?(session)
       if (Helper.current_teacher(session) == Teacher.find_by_slug(params[:slug]))
         @teacher = Helper.current_teacher(session)
-        puts params
-        erb :'course/teacher/show'
+        @course = Course.find(params[:id])
+        CourseQuiz.add_quiz_to_course(params)
+        redirect "/teacher/#{@teacher.slug}/course/#{@course.id}"
       else
         redirect '/'
       end
