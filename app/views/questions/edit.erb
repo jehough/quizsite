@@ -1,4 +1,5 @@
-<form action='/teacher/<%= @teacher.slug %>/question' method="post">
+<form action='/teacher/<%= @teacher.slug %>/question/<%= @question.id %>' method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch"/>
   <p> Question: <input type="text" name="question[question]" value="<%= @question.question %>"/></p>
   <h4>Select Correct Answer with button on left.</h4>
   <p><input type="radio" name = "question[correct_ans]" value="ans_1"> Choice 1: <input type="text" name="question[ans_1]" value="<%= @question.ans_1 %>"/></p>

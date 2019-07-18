@@ -75,7 +75,7 @@ class QuestionController < ApplicationController
   end
 
   patch '/teacher/:slug/question/:id' do
-
+    puts params
   end
 
 end

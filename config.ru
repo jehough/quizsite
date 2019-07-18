@@ -6,6 +6,7 @@ require_relative './app/controllers/teacher_course_controller'
 require_relative './app/controllers/teacher_quiz_controller'
 require_relative './app/controllers/question_controller'
 
+use Rack::MethodOverride
 use QuestionController
 use TeacherQuizController
 use TeacherCourseController
