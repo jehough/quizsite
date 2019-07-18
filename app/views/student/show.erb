@@ -3,7 +3,7 @@
 <h3>Your Classes:</h3>
 <ol>
   <% @student.courses.each do |course| %>
-    <li><a href="/student/<%= @student.slug %>/courses/<%= course.id %>"><%= course.name %></a></li>
+    <li><a href="/student/<%= @student.slug %>/course/<%= course.id %>"><%= course.name %></a></li>
   <% end %>
 </ol>
 

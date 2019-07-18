@@ -2,7 +2,7 @@ require 'pry'
 require 'rack-flash'
 
 class TeacherController < ApplicationController
-  use Rack::Flash
+
 
 
   get '/teacher/new' do
