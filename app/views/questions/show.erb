@@ -7,8 +7,10 @@
 <p> D. <%= @question.ans_4 %></p>
 
 <br>
+<% if !!@question.correct_ans %>
 <% ans = @question.correct_ans %>
 <p>Correct Answer: <%= @question.send(ans.to_sym) %> </p>
+<% end %>
 
 <a href="/teacher/<%= @teacher.slug %>/question/<%= @question.id %>/edit"><button>Edit This Question</button></a>
 <form action="/teacher/<%= @teacher.slug %>/question/<%= @question.id %>" method="post">
