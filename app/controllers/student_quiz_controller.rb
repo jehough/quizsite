@@ -9,7 +9,7 @@ class StudentQuizController < ApplicationController
         @student = Helper.current_student(session)
         @stquiz = StudentQuiz.find(params[:id])
         if (@stquiz.score != nil)
-          flash[:message] = "I'm sorry, you have already taken this quiz"
+          flash[:message] = "I'm sorry #{@student.name}, you have already taken this quiz"
           erb :'/quiz/student/error'
         elsif (Time.now < @stquiz.open_time || Time.now > @stquiz.close_time)
           flash[:message] = "This quiz is not currently open"
@@ -23,6 +23,15 @@ class StudentQuizController < ApplicationController
     else
       redirect '/'
     end
+  end
+
+  post '/student/:slug/quiz/:id' do
+    @student = Student.find_by_slug(params[:slug])
+    @stquiz = StudentQuiz.find(params[:id])
+    score = Grade.grade_quiz(params)
+    @stquiz.score = score
+    @stquiz.save
+    redirect "/student/#{@student.slug}"
   end
 
 end
