@@ -10,4 +10,6 @@ class StudentQuiz < ActiveRecord::Base
       StudentQuestion.create(:student_quiz => self.id, :question => question.id, :student_answer => params["student_answers"][qid])
     end
   end
+
+  
 end

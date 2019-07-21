@@ -31,6 +31,7 @@ class StudentQuizController < ApplicationController
     score = Grade.grade_quiz(params)
     @stquiz.score = score
     @stquiz.save
+    @stquiz.save_student_answers(params)
     redirect "/student/#{@student.slug}"
   end
 
