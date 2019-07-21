@@ -9,7 +9,7 @@ class StudentQuizController < ApplicationController
         @student = Helper.current_student(session)
         @stquiz = StudentQuiz.find(params[:id])
         if (@stquiz.score != nil)
-
+          @stans = @stquiz.student_questions
           erb :'/quiz/student/complete'
         elsif (Time.now < @stquiz.open_time || Time.now > @stquiz.close_time)
           flash[:message] = "This quiz is not currently open"
@@ -33,7 +33,7 @@ class StudentQuizController < ApplicationController
     @stquiz.score = score
     @stquiz.save
 
-    redirect "/student/#{@student.slug}"
+    redirect "/student/#{@student.slug}/quiz/#{@stquiz.id}"
   end
 
 

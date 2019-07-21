@@ -1,1 +1,38 @@
-<h1><%= @student.name %>'s <%= @stquiz.quiz.name %>
+<h1><%= @student.name %>'s <%= @stquiz.quiz.name %> Quiz grade!</h1>
+
+<ol>
+  <% @stquiz.quiz.questions.each do |question| %>
+    <% student_ans = @stans.find{|stans| stans.question == question} %>
+  <li> <%= question.question %> </li>
+    <ol>
+      <li> <%= question.ans_1 %>
+        <% if question.correct_ans == "ans_1" %>
+        &#9989
+        <% elsif student_ans.student_answer == "ans_1" %>
+        &#10060
+        <% end %>
+      </li>
+      <li> <%= question.ans_2 %>
+        <% if question.correct_ans == "ans_2" %>
+        &#9989
+        <% elsif student_ans.student_answer == "ans_2" %>
+        &#10060
+        <% end %>
+      </li>
+      <li> <%= question.ans_3 %>
+        <% if question.correct_ans == "ans_3" %>
+        &#9989
+        <% elsif student_ans.student_answer == "ans_3" %>
+        &#10060
+        <% end %>
+      </li>
+      <li> <%= question.ans_4 %>
+        <% if question.correct_ans == "ans_4" %>
+        &#9989
+        <% elsif student_ans.student_answer == "ans_4" %>
+        &#10060
+        <% end %></li>
+    </ol>
+  <br>
+  <% end %>
+</ol>
