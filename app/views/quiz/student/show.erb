@@ -6,10 +6,10 @@
     <li><%= question.question %> </li>
       <ol>
         <input type="hidden" id="hidden" name="question_id[]" value=<%= question.id %> />
-        <li><input type="radio" id = "<%=question.id%> ans_1" name="student_answers[<%= question.id %>]" value="ans_1"><%= question.ans_1 %> </li>
-        <li><input type="radio" id = "<%=question.id%> ans_2" name="student_answers[<%= question.id %>]" value="ans_2"><%= question.ans_2 %> </li>
-        <li><input type="radio" id = "<%=question.id%> ans_3" name="student_answers[<%= question.id %>]" value="ans_3"><%= question.ans_3 %> </li>
-        <li><input type="radio" id = "<%=question.id%> ans_4" name="student_answers[<%= question.id %>]" value="ans_4"><%= question.ans_4 %> </li>
+        <li><input type="radio" id = "<%=question.id%>_ans_1" name="student_answers[<%= question.id %>]" value="ans_1"><%= question.ans_1 %> </li>
+        <li><input type="radio" id = "<%=question.id%>_ans_2" name="student_answers[<%= question.id %>]" value="ans_2"><%= question.ans_2 %> </li>
+        <li><input type="radio" id = "<%=question.id%>_ans_3" name="student_answers[<%= question.id %>]" value="ans_3"><%= question.ans_3 %> </li>
+        <li><input type="radio" id = "<%=question.id%>_ans_4" name="student_answers[<%= question.id %>]" value="ans_4"><%= question.ans_4 %> </li>
       </ol>
       <br>
   <% end %>
