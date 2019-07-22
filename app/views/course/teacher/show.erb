@@ -4,19 +4,21 @@
   <tr>
     <th>Students</th>
     <% @course.quizzes.each do |quiz| %>
-      <th> <%= quiz.name %> </th>
+      <th id="<%= quiz.id %>" > <%= quiz.name %> </th>
     <% end %>
   </tr>
   <% @course.students.each do |student| %>
     <tr>
       <td><%= student.name %></td>
-      <% student.student_quizzes.each do |quiz| %>
-        <% if quiz.course_quiz.course == @course %>
-        <td><%= quiz.score %></td>
+      <% student.student_quizzes.each do |squiz| %>
+        <% if squiz.course_quiz.course == @course %>
+        <td headers="<%= squiz.quiz.id%>"><%= squiz.score %></td>
         <% end %>
       <% end %>
     </tr>
   <% end %>
+  <tfoot>
+    <tr>
 </table>
 
 <a href="/teacher/<%= @teacher.slug %>/course/<%= @course.id %>/edit"><button>Add/Remove Students</button></a>
