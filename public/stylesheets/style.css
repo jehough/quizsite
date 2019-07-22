@@ -14,13 +14,18 @@ h1 {font-family: Tahoma;
 table {
   font-family: Tahoma;
   border: 2px solid #000000;
-  background-color: #4A4A4A;
+  background-color: #a3c6ff;
   width: 80%;
   text-align: center;
   border-collapse: collapse;
 }
 
 table td, table th {
-  border: 1px solid #4A4A4A;
+  border: 1px solid #a3c6ff;
   padding: 3px 2px;
+}
+
+table tr:nth-child(even) {
+  background: #ffffff;
+  border-bottom: 3px solid #000000;
 }

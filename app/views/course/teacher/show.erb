@@ -11,7 +11,9 @@
     <tr>
       <td><%= student.name %></td>
       <% student.student_quizzes.each do |quiz| %>
+        <% if quiz.course_quiz.course == @course %>
         <td><%= quiz.score %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
