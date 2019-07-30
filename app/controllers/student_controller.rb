@@ -1,8 +1,8 @@
 require 'pry'
-require 'rack-flash'
+
 
 class StudentController < ApplicationController
-  use Rack::Flash
+
 
   get '/student' do
     if Helper.is_teacher?(session)

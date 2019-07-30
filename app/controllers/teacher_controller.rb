@@ -1,5 +1,4 @@
 require 'pry'
-require 'rack-flash'
 
 class TeacherController < ApplicationController
 
