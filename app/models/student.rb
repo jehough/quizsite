@@ -1,6 +1,8 @@
 require_relative "./concerns/slugifiable"
 class Student < ActiveRecord::Base
   has_secure_password
+  validates :name, presence: true
+  validates :password, presence: true
   has_many :student_courses
   has_many :courses, through: :student_courses
   has_many :teachers, through: :courses

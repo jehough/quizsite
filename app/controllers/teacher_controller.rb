@@ -15,15 +15,15 @@ class TeacherController < ApplicationController
   end
 
   post '/teacher' do
-    if (params[:name] == "" || params[:password] == "")
-      redirect '/signup'
-    elsif !!(Teacher.find_by(:name => params[:name]))
+    if !!(Teacher.find_by(:name => params[:name]))
       flash[:message] = "This username is taken."
       redirect '/teacher/new'
-    else
-      teacher = Teacher.create(:name => params[:name], :password => params[:password])
+    elsif Teacher.create(:name => params[:name], :password => params[:password]).valid?
+      teacher = Teacher.find_by(:name => params[:name])
       session[:teacher_id] = teacher.id
       redirect "/teacher/#{teacher.slug}"
+    else
+        redirect '/signup'
     end
   end
 
