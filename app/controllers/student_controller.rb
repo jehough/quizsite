@@ -22,15 +22,17 @@ class StudentController < ApplicationController
   end
 
   post '/student' do
-    if (params[:name] == "" || params[:password] == "")
-      flash[:message] = "Please fill in all fields"
-      redirect '/student/new'
-    elsif !!(Student.find_by(:name => params[:name]))
+
+    if !!(Student.find_by(:name => params[:name]))
       flash[:message] = "This username is taken."
       redirect '/student/new'
-    else
-      student = Student.create(:name => params[:name], :password => params[:password])
+    elsif Student.create(:name => params[:name], :password => params[:password]).valid?
+      student = Student.find_by(:name => params[:name])
+      session[:student_id] = student.id
       redirect "/student"
+    else
+      flash[:message] = "Please fill in all fields"
+      redirect '/student/new'
     end
   end
 
