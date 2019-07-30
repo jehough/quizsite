@@ -22,7 +22,6 @@ class StudentController < ApplicationController
   end
 
   post '/student' do
-
     if !!(Student.find_by(:name => params[:name]))
       flash[:message] = "This username is taken."
       redirect '/student/new'
